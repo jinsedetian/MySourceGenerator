@@ -19,7 +19,7 @@ namespace MySourceGenerator
     public class AutoNotifyGenerator : ISourceGenerator
     {
         private string Template = "";
-        private string DomainName = "你的命名空间";
+        private string DomainName = "ExampleDomain.Model";//你的命名空间
         public void Initialize(GeneratorInitializationContext context)
         {
             //if (Debugger.IsAttached)
@@ -111,8 +111,8 @@ namespace {2}.EntityFrameworkCore
                     code = $@"{code}
                 entity.Property(e => e.{property.Name})
                 {HasColumnType(TypeChange(property))}
-                .HasColumnName(""{(namedTypeSymbol.ContainingNamespace.Name == DomainName ? ToLowerDownLine(property.Name) : ToUpperCamelCase(property.Name))}"");//{string.Join(",", property.GetAttributes().Select(w => w.AttributeClass.Name))}
-                ";
+                .HasColumnName(""{(namedTypeSymbol.ContainingNamespace.Name == DomainName ? ToLowerDownLine(property.Name) : ToUpperCamelCase(property.Name))}"");
+                ";//根据情况选择生成规则
                 }
                 code = $@"{code}
                 //{string.Join(",", properties.Where(w => w.IsVirtual == true && w.Type.Name != "List").Select(w => w.Name))}";
