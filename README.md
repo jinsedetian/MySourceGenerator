@@ -1,2 +1,2 @@
 # MySourceGenerator
-本项目基于Source Generator尝试通过动态生成代码，进行简化CodeFirst数据库Context的写法，目前未完善。
+本项目基于Source Generator尝试通过动态生成代码，进行简化CodeFirst数据库Context的写法，暂时没有很好的方案应对每一种场景。
