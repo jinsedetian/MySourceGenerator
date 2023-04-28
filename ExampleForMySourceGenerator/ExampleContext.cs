@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging.Debug;
 using System.Security.Claims;
+using Volo.Abp.EntityFrameworkCore;
 
 namespace ExampleForMySourceGenerator
 {
-    public class ExampleContext : DbContext
+    public partial class ExampleContext : AbpDbContext<ExampleContext>
     {
         /// <summary>
         /// 日志
@@ -15,8 +16,7 @@ namespace ExampleForMySourceGenerator
         /// 构造函数
         /// </summary>
         /// <param name="options">选项</param>
-        public ExampleContext(DbContextOptions<ExampleContext> options)
-            : base(options)
+        public ExampleContext(DbContextOptions<ExampleContext> options) : base(options)
         {
 
         }
@@ -37,7 +37,7 @@ namespace ExampleForMySourceGenerator
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
+            modelBuilder.Configure();
         }
     }
 }
